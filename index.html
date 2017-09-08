@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Divano Shop</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+        rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <link href="css/creative.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- MENU -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">FURNICHANNEL</a>
+            </div>
+
+            <!-- voi menu -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                </ul>
+            </div>
+            <!-- menu burger -->
+        </div>
+        <!-- fine menu -->
+    </nav>
+
+    <!---------------------------------------------- SEZIONE PRODOTTO ---------------------------------------------->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="photos">
+                        <img id="immagine" src="http://www.ikea.com/it/it/images/products/kivik-divano-a-posti-beige__0479987_PE618871_S4.JPG" alt="divano"/>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="product-info">
+                        <h1 class="hidden-xs">KIV</h1>
+                        <div class="short-description">
+                            Lasciati avvolgere dalla morbidezza del divano KIV. Con la sua ampiezza, i braccioli bassi e il memory foam che si adatta al contorno del tuo corpo.
+                        </div>
+                    </div>
+                    </br>
+                    <div class="configuratore">
+                        <div class="options">
+                            <div class="formModel">
+                                <select id="tendinaModello">
+                                    <option value=0>Divano a 2 posti</option>
+                                    <option value=3>Divano a 3 posti</option>
+                                    <option value=6>Divano ad angolo</option>
+                                </select>
+                            </div>
+                            </br>
+                            <div class="formColor">
+                                <select id="tendinaFodera">
+                                    <option value=0>Beige</option>
+                                    <option value=1>Marrone Scuro</option>
+                                    <option value=2>Blu Scuro</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    </br>
+                    </br>
+                    </br>
+                    <div class="price">
+                        <span><input id="prezzo" value="€ 399" readonly="readonly"><span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!---------------------------------------------- LINK SCRIPT ----------------------------------------------------->
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/jquery.elevatezoom.js" type="text/javascript"></script>
+    <script>
+        $("#immagine").elevateZoom();
+    </script>
+    <script>
+        function cambiaImm(immId,colId) {
+            var divani = [{
+                    src: 'http://www.ikea.com/it/it/images/products/kivik-divano-a-posti-beige__0479987_PE618871_S4.JPG', prezzo: '€ 399',
+                },
+                {
+                    src: 'http://www.ikea.com/it/it/images/products/kivik-divano-a-posti-marrone__0463020_PE609617_S4.JPG', prezzo: '€ 349',
+                },
+                {
+                    src: 'http://www.ikea.com/it/it/images/products/kivik-divano-a-posti-blu__0504260_PE633255_S4.JPG', prezzo: '€ 399',
+                },
+                {
+                    src: 'http://www.ikea.com/it/it/images/products/kivik-divano-a-posti-beige__0479989_PE618870_S4.JPG', prezzo: '€ 449',
+                },
+                {
+                    src: 'http://www.ikea.com/it/it/images/products/kivik-divano-a-posti-marrone__0463024_PE609621_S4.JPG', prezzo: '€ 399', 
+                },
+                {
+                    src: 'http://www.ikea.com/it/it/images/products/kivik-divano-a-posti-blu__0504261_PE633252_S4.JPG', prezzo: '€ 449',
+                },
+                {
+                    src: 'http://www.ikea.com/it/it/images/products/kivik-divano-a-posti-e-chaise-longue-beige__0479986_PE618880_S4.JPG', prezzo: '€ 699',
+                },
+                {
+                    src: 'http://www.ikea.com/it/it/images/products/kivik-divano-a-posti-e-chaise-longue-marrone__0463018_PE609615_S4.JPG', prezzo: '€ 629',
+                },
+                {
+                    src: 'http://www.ikea.com/it/it/images/products/kivik-divano-a-posti-e-chaise-longue-blu__0504259_PE633254_S4.JPG', prezzo: '€ 699',
+                }
+            ];
+
+            $("#immagine").attr('src', divani[parseInt(immId) + parseInt(colId)].src);
+            $("#immagine").elevateZoom();
+            $("#prezzo").val(divani[parseInt(immId) + parseInt(colId)].prezzo);
+        }
+        $("#tendinaModello").on("change", function () {
+            var immId = $(this).val();
+            cambiaImm(immId,  $("#tendinaFodera").val());
+        });
+
+        $("#tendinaFodera").on("change", function () {
+            var colId = $(this).val();
+            cambiaImm(colId,  $("#tendinaModello").val());
+        });
+    </script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
